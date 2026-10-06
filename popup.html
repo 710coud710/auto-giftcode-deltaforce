@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delta Force Auto Code</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="header-brand">
+                <div class="logo-icon">🎯</div>
+                <div>
+                    <h1 class="brand-title">DELTA FORCE</h1>
+                    <div class="brand-subtitle">Auto Gift Code Redeemer</div>
+                </div>
+            </div>
+            <div id="connectionStatus" class="connection-pill offline">
+                <span class="status-dot"></span>
+                <span id="connectionText">Đang kiểm tra...</span>
+            </div>
+        </header>
+
+        <!-- Status & Stats Card -->
+        <div class="card status-card">
+            <div class="status-header">
+                <span class="status-title">TRẠNG THÁI</span>
+                <span id="currentStatusText" class="status-desc">Sẵn sàng</span>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="progress-wrapper">
+                <div class="progress-bar-bg">
+                    <div id="progressBar" class="progress-bar-fill" style="width: 0%"></div>
+                </div>
+                <div class="progress-info">
+                    <span id="progressPercent">0%</span>
+                    <span id="progressCount">0 / 0 mã</span>
+                </div>
+            </div>
+
+            <!-- Stats Grid -->
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <span class="stat-num" id="statTotal">0</span>
+                    <span class="stat-label">Tổng mã</span>
+                </div>
+                <div class="stat-box success">
+                    <span class="stat-num" id="statSuccess">0</span>
+                    <span class="stat-label">Thành công</span>
+                </div>
+                <div class="stat-box warning">
+                    <span class="stat-num" id="statRemaining">0</span>
+                    <span class="stat-label">Chưa đổi</span>
+                </div>
+                <div class="stat-box danger">
+                    <span class="stat-num" id="statFailed">0</span>
+                    <span class="stat-label">Lỗi/Bỏ qua</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Actions -->
+        <div class="action-controls">
+            <button id="startBtn" class="btn btn-primary btn-large">
+                <span class="btn-icon">🚀</span>
+                <span id="startBtnText">BẮT ĐẦU TỰ ĐỘNG NHẬP</span>
+            </button>
+            <div class="sub-controls">
+                <button id="pauseBtn" class="btn btn-secondary" disabled>
+                    <span class="btn-icon">⏸</span> Tạm dừng
+                </button>
+                <button id="stopBtn" class="btn btn-danger" disabled>
+                    <span class="btn-icon">⏹</span> Dừng lại
+                </button>
+            </div>
+        </div>
+
+        <!-- Settings Bar -->
+        <div class="settings-bar">
+            <div class="setting-item">
+                <label for="delayInput">⏱ Delay giữa các lần (giây):</label>
+                <input id="delayInput" type="number" min="0.5" max="10" step="0.5" value="1.0">
+            </div>
+            <div class="setting-actions">
+                <button id="reloadConfigBtn" class="btn-icon-text" title="Tải lại toàn bộ mã gốc từ config.json">
+                    🔄 Nạp lại config
+                </button>
+            </div>
+        </div>
+
+        <!-- Code List Section -->
+        <div class="codes-section">
+            <div class="codes-header">
+                <div class="tabs">
+                    <button class="tab-btn active" data-tab="active">Còn lại (<span id="tabActiveCount">0</span>)</button>
+                    <button class="tab-btn" data-tab="completed">Đã đổi (<span id="tabCompletedCount">0</span>)</button>
+                    <button class="tab-btn" data-tab="all">Tất cả (<span id="tabAllCount">0</span>)</button>
+                </div>
+                <input id="searchCode" class="search-input" type="text" placeholder="🔍 Tìm mã...">
+            </div>
+
+            <!-- List Container -->
+            <div id="codeList" class="code-list">
+                <!-- Code items injected via popup.js -->
+            </div>
+
+            <!-- Add Single Code Box -->
+            <div class="add-code-wrapper">
+                <input id="newCodeInput" type="text" placeholder="Nhập thêm mã gift code mới..." autocomplete="off">
+                <button id="addCodeBtn" class="btn btn-secondary" title="Thêm vào danh sách">
+                    + Thêm
+                </button>
+            </div>
+        </div>
+
+        <!-- Footer Notice -->
+        <footer class="app-footer">
+            <span>💡 Extension tự động nhấn nút <b>Đổi</b>, bấm <b>X</b> khi thành công và xóa code.</span>
+        </footer>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html>

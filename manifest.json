@@ -1,0 +1,49 @@
+{
+  "manifest_version": 3,
+  "name": "Delta Force Auto Gift Code",
+  "version": "1.1.0",
+  "description": "Tự động nhập và đổi Gift Code Delta Force từ file config.",
+  "permissions": [
+    "activeTab",
+    "storage",
+    "scripting"
+  ],
+  "host_permissions": [
+    "*://*.playdeltaforce.com/*",
+    "*://playdeltaforce.com/*",
+    "*://*.garena.sg/*",
+    "*://*.garena.vn/*",
+    "*://*/*cdk*",
+    "*://*/*redeem*"
+  ],
+  "action": {
+    "default_title": "Delta Force Auto Code",
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.playdeltaforce.com/*",
+        "*://playdeltaforce.com/*",
+        "*://*.garena.sg/*",
+        "*://*.garena.vn/*",
+        "*://*/*cdk*",
+        "*://*/*redeem*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "config.json"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
+    }
+  ]
+}
